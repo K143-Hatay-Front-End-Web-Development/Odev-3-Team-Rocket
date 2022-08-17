@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2d2d2d;
+  color: white;
+  font-family: "Handlee", cursive;
+  user-select: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100vh;
+  padding: 60px;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+p {
+  font-size: 64px;
+}
+
+.btn {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.btn:active {
+  transform: translateY(5px);
+}
+
+.large-btn:hover {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(82%) saturate(7491%)
+    hue-rotate(354deg) brightness(101%) contrast(126%);
+}

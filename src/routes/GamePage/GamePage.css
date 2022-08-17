@@ -1,0 +1,50 @@
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 50px;
+}
+
+.answers {
+  width: 900px;
+}
+
+.answer-btn {
+  border-radius: 50%;
+  width: 200px;
+  margin: 1rem;
+}
+
+.answer-btn:nth-child(1) {
+  margin-left: 90px;
+}
+
+.answer-btn:nth-child(2) {
+  margin-left: 400px;
+}
+
+.answer-btn:nth-child(3) {
+  margin-left: 180px;
+}
+
+.info {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info > ul {
+  list-style: none;
+  font-size: 48px;
+  display: flex;
+}
+
+.info ul li {
+  margin: 0 3rem 0 3rem;
+}

@@ -1,0 +1,14 @@
+.result-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.problems p {
+  font-size: 52px;
+  text-align: center;
+}
+
+.stats-section p {
+  margin: 50px 0;
+}

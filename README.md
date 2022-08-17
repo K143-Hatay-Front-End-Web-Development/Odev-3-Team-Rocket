@@ -1,10 +1,23 @@
-# Odev-3
+# Math Game
 
-## Grup Üyeleri
-- [Ad] [Soyad]
-- [Ad] [Soyad]
+A Math Game built with React.
 
-## İçerik
+## Usage
 
--  [Figma ](https://www.figma.com/file/KBUZCtv1lw507YqSABRXwV/Matematik-%C3%96devi?node-id=0%3A1)
--  
+### Install dependencies
+
+```
+npm install
+```
+
+### Run React dev server
+
+```
+npm run dev
+```
+
+### To build for production
+
+```
+npm run build
+```

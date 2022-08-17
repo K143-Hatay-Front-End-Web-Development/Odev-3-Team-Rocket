@@ -1,0 +1,21 @@
+.operator {
+  display: flex;
+  gap: 30px;
+}
+
+.operator p {
+  min-width: 50px;
+}
+
+.operator-btn {
+  min-width: 225px;
+  width: fit-content;
+  display: block;
+  font-size: 64px;
+  text-align: right;
+}
+
+.operator-btn:hover {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(82%) saturate(7491%)
+    hue-rotate(354deg) brightness(101%) contrast(126%);
+}
