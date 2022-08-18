@@ -1,31 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
-import { answerBtn } from "../../assets/svgs";
 import "./Answers.css";
+import AnswerButton from "../AnswerButton/AnswerButton";
 
 const Answers = () => {
-  const { quiz, question, setQuestion } = useGameContext();
-
-  const handleClick = () => {
-    if (question < quiz.length - 1) {
-      setQuestion(question + 1);
-    } else {
-      setQuestion(0);
-    }
-  };
+  const { quiz, question } = useGameContext();
+  const [clickedBtn, setClickedBtn] = useState();
 
   return (
     <div className="answers">
       {quiz[question]?.answers &&
         quiz[question].answers.map((_, index) => {
           return (
-            <button
+            <AnswerButton
               key={index}
-              onClick={handleClick}
-              className="btn answer-btn"
-            >
-              {answerBtn(quiz[question]?.answers[index])}
-            </button>
+              num={index}
+              clickedBtn={clickedBtn}
+              setClickedBtn={setClickedBtn}
+            />
           );
         })}
     </div>
