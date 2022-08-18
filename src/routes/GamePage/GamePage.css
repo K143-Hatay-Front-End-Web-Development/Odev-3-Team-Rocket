@@ -1,3 +1,18 @@
+.base-gamepage {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+}
+
+.bg-answer-true {
+  background-color: #00bf63;
+}
+
+.bg-answer-false {
+  background-color: #fa0000;
+}
+
 .game-wrapper {
   display: flex;
   flex-direction: column;
