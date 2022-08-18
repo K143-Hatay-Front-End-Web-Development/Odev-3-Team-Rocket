@@ -11,7 +11,7 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
 
     setClickedBtn(num);
 
-    if (quiz[question]?.answers[num] === quiz[question]?.correctAnswer) {
+    if (quiz[question]?.answers[num] === quiz[question]?.result) {
       setAnswer(true);
     } else {
       setAnswer(false);
@@ -21,9 +21,11 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
       if (question < quiz.length - 1) {
         setQuestion(question + 1);
         setClickedBtn();
+        setAnswer(null);
       } else {
         setQuestion(0);
         setClickedBtn();
+        setAnswer(null);
       }
     }, 3000);
   };
