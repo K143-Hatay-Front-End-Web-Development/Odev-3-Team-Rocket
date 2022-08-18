@@ -1,53 +1,33 @@
-import { useState } from "react";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
+import { Link } from "react-router-dom";
 import "./GamePage.css";
-
-import {
-  student,
-  answerBtn,
-  unhappyStudent,
-  happyStudent,
-} from "../../assets/svgs";
+import QuizStats from "../../components/QuizStats/QuizStats";
+import QuestionSection from "../../components/QuestionSection/QuestionSection";
+import Answers from "../../components/Answers/Answers";
 
 const GamePage = () => {
-  const [question, setQuestion] = useState(0);
-  const { quiz } = useGameContext();
-
-  const handleClick = () => {
-    if (question < quiz.length - 1) {
-      setQuestion(question + 1);
-    } else {
-      setQuestion(0);
-    }
-  };
+  const { quiz, question } = useGameContext();
 
   return (
     <div className="container game-wrapper">
-      <div className="info">
-        <ul>
-          <li>Puan: 120</li>
-          <li>Tur: 2</li>
-          <li>Soru: 7</li>
-        </ul>
-      </div>
-      <div className="game">
-        <div className="student">
-          {student(
-            `${quiz[question].number1} ${quiz[question].operator} ${quiz[question].number2}`
-          )}
+      {quiz[question]?.answers ? (
+        <div>
+          <div className="info">
+            <QuizStats />
+          </div>
+          <div className="game">
+            <QuestionSection />
+            <Answers />
+          </div>
         </div>
-        <div className="answers">
-          <button onClick={handleClick} className="btn answer-btn">
-            {answerBtn(quiz[question].answers[0])}
-          </button>
-          <button className="btn answer-btn">
-            {answerBtn(quiz[question].answers[1])}
-          </button>
-          <button className="btn answer-btn">
-            {answerBtn(quiz[question].answers[2])}
-          </button>
+      ) : (
+        <div className="error">
+          <h1>Go Home and Choose Quiz</h1>
+          <Link className="go-home-btn" to="/">
+            GO HOME
+          </Link>
         </div>
-      </div>
+      )}
     </div>
   );
 };
