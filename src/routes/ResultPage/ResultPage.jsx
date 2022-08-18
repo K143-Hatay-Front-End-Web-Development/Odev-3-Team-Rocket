@@ -1,12 +1,12 @@
 import React from "react";
-
+import { useGameContext } from "../../contexts/GameContext/GameContext";
 import { Link } from "react-router-dom";
-
 import { result, returnBtn, problems } from "../../assets/svgs";
-
 import "./ResultPage.css";
 
 const ResultPage = () => {
+  const { quiz } = useGameContext();
+
   return (
     <section className="container result-wrapper">
       <div className="stats-section">
@@ -21,17 +21,21 @@ const ResultPage = () => {
         </button>
       </div>
       <div className="problems">
-        {problems}
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
+        <div className="problems-header">{problems}</div>
+        {quiz.map((question, index) => {
+          return (
+            <div key={index} className="question-results">
+              <div className="problems">
+                <p>
+                  {`${question.number1} ${question.operator} ${question.number2} = ${question.result}`}
+                </p>
+              </div>
+              <div className="problem-result">
+                <p>{question.isTrue}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
