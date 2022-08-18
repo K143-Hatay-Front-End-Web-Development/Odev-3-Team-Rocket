@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./AnswerButton.css";
-import { answerBtn } from "../../assets/svgs";
+import { answerBtn, tick } from "../../assets/svgs";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
 
 const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
-  const { quiz, question, setQuestion, setAnswer } = useGameContext();
+  const { quiz, setQuiz, question, setQuestion, setAnswer } = useGameContext();
   const navigate = useNavigate();
 
   const handleClick = () => {
     if (clickedBtn !== undefined) return;
-
     setClickedBtn(num);
 
     if (quiz[question]?.answers[num] === quiz[question]?.result) {
       setAnswer(true);
+      quiz[question].isTrue = tick;
     } else {
       setAnswer(false);
     }
-
+    console.log(quiz);
     setTimeout(() => {
       if (question < quiz.length - 1) {
         setQuestion(question + 1);
