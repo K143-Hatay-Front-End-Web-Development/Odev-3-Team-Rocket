@@ -1,0 +1,9 @@
+.base > ul {
+  list-style: none;
+  font-size: 48px;
+  display: flex;
+}
+
+.base ul li {
+  margin: 0 0 0 2rem;
+}

@@ -1,14 +1,39 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { header, startBtn, tick } from "../../assets/svgs";
+import { useGameContext } from "../../contexts/GameContext/GameContext";
 import "./HomePage.css";
 import MainStats from "../../components/MainStats/MainStats";
 import OperatorButton from "../../components/OperatorButtons/OperatorButton";
+import {
+  additionQuestion,
+  subtractionQuiz,
+  multiplicationQuiz,
+  divisionQuiz,
+} from "./QuizFunctions.js";
 
 const operators = ["Toplama", "Çıkarma", "Çarpma", "Bölme"];
 
 const HomePage = () => {
-  const [operator, setOperator] = useState(null);
+  const { operator, setOperator, setQuiz } = useGameContext();
+
+  useEffect(() => {
+    const questions = [];
+
+    for (let i = 0; i < 10; i++) {
+      if (operator === "Toplama") {
+        questions.push(additionQuestion());
+      } else if (operator === "Çıkarma") {
+        questions.push(subtractionQuiz());
+      } else if (operator === "Çarpma") {
+        questions.push(multiplicationQuiz());
+      } else if (operator === "Bölme") {
+        questions.push(divisionQuiz());
+      }
+    }
+
+    setQuiz(questions);
+  }, [operator]);
 
   return (
     <div className="container home-wrapper">

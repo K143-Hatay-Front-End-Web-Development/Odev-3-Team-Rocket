@@ -1,34 +1,33 @@
-import React from "react";
-
-// SVG
-import {
-  student,
-  answerBtn,
-  unhappyStudent,
-  happyStudent,
-} from "../../assets/svgs";
-
-// CSS
+import { useGameContext } from "../../contexts/GameContext/GameContext";
+import { Link } from "react-router-dom";
 import "./GamePage.css";
+import QuizStats from "../../components/QuizStats/QuizStats";
+import QuestionSection from "../../components/QuestionSection/QuestionSection";
+import Answers from "../../components/Answers/Answers";
 
 const GamePage = () => {
+  const { quiz, question } = useGameContext();
+
   return (
     <div className="container game-wrapper">
-      <div className="info">
-        <ul>
-          <li>Puan: 120</li>
-          <li>Tur: 2</li>
-          <li>Soru: 7</li>
-        </ul>
-      </div>
-      <div className="game">
-        <div className="student">{student("7 x 8")}</div>
-        <div className="answers">
-          <button className="btn answer-btn">{answerBtn(49)}</button>
-          <button className="btn answer-btn">{answerBtn(64)}</button>
-          <button className="btn answer-btn">{answerBtn(56)}</button>
+      {quiz[question]?.answers ? (
+        <div>
+          <div className="info">
+            <QuizStats />
+          </div>
+          <div className="game">
+            <QuestionSection />
+            <Answers />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="error">
+          <h1>Go Home and Choose Quiz</h1>
+          <Link className="go-home-btn" to="/">
+            GO HOME
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
