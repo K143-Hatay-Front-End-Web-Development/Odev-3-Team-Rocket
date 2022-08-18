@@ -12,3 +12,21 @@
 .stats-section p {
   margin: 50px 0;
 }
+
+.question-results {
+  display: flex;
+}
+
+.problems-header {
+  width: 400px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.problems {
+  width: 350px;
+}
+
+.problem-result {
+  width: 10px;
+}
