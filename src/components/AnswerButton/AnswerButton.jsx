@@ -5,7 +5,7 @@ import { answerBtn, tick } from "../../assets/svgs";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
 
 const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
-  const { quiz, setQuiz, question, setQuestion, setAnswer } = useGameContext();
+  const { quiz, question, setQuestion, setAnswer } = useGameContext();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -18,7 +18,7 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
     } else {
       setAnswer(false);
     }
-    console.log(quiz);
+
     setTimeout(() => {
       if (question < quiz.length - 1) {
         setQuestion(question + 1);
