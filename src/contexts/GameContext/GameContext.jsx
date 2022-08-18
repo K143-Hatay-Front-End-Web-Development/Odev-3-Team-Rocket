@@ -8,10 +8,20 @@ const Provider = (props) => {
   const [operator, setOperator] = useState(null);
   const [quiz, setQuiz] = useState([]);
   const [question, setQuestion] = useState(0);
+  const [answer, setAnswer] = useState(null);
 
   return (
     <GameContext.Provider
-      value={{ operator, setOperator, quiz, setQuiz, question, setQuestion }}
+      value={{
+        operator,
+        setOperator,
+        quiz,
+        setQuiz,
+        question,
+        setQuestion,
+        answer,
+        setAnswer,
+      }}
     >
       {props.children}
     </GameContext.Provider>
