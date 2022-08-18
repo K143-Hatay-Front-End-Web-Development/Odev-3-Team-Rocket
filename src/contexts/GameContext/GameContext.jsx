@@ -6,7 +6,7 @@ export const useGameContext = () => useContext(GameContext);
 
 const Provider = (props) => {
   const [operator, setOperator] = useState(null);
-  const [quiz, setQuiz] = useState(Array(10).fill(""));
+  const [quiz, setQuiz] = useState([]);
   const [question, setQuestion] = useState(0);
 
   return (
