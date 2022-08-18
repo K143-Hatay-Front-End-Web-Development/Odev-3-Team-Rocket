@@ -20,7 +20,7 @@ const HomePage = () => {
   useEffect(() => {
     const questions = [];
 
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i < 10; i++) {
       if (operator === "Toplama") {
         questions.push(additionQuestion());
       } else if (operator === "Çıkarma") {
