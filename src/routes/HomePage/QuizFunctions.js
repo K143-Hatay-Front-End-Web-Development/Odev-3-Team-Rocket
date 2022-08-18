@@ -18,7 +18,7 @@ export function additionQuestion() {
 
     answers.sort(() => Math.random() - 0.5); // Sonuçları rastgele sıralar.
 
-    return { operator: "+", number1, number2, result, answers };
+    return { operator: "+", number1, number2, result, answers, isTrue: "x" };
   }
 
   let question = randQuestion();
@@ -44,7 +44,7 @@ export function subtractionQuiz() {
     let answers = [result, fakeAnswer1, fakeAnswer2];
     answers.sort(() => Math.random() - 0.5); // Sonuçları rastgele sıralar.
 
-    return { operator: "-", number1, number2, result, answers };
+    return { operator: "-", number1, number2, result, answers, isTrue: "x" };
   }
 
   let question = randQuestion();
@@ -68,7 +68,7 @@ export function multiplicationQuiz() {
     let answers = [result, fakeAnswer1, fakeAnswer2];
     answers.sort(() => Math.random() - 0.5); // Sonuçları rastgele sıralar.
 
-    return { operator: "x", number1, number2, result, answers };
+    return { operator: "x", number1, number2, result, answers, isTrue: "x" };
   }
 
   let question = randQuestion();
@@ -95,7 +95,7 @@ export function divisionQuiz() {
     let answers = [result, fakeAnswer1, fakeAnswer2];
     answers.sort(() => Math.random() - 0.5); // Sonuçları rastgele sıralar.
 
-    return { operator: "/", number1, number2, result, answers };
+    return { operator: "/", number1, number2, result, answers, isTrue: "x" };
   }
 
   let question = randQuestion();
