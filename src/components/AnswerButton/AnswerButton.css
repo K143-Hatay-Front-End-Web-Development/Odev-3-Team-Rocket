@@ -1,0 +1,27 @@
+.answer-btn {
+  border-radius: 50%;
+  width: 200px;
+  margin: 1rem;
+}
+
+.answer-btn:nth-child(1) {
+  margin-left: 90px;
+}
+
+.answer-btn:nth-child(2) {
+  margin-left: 400px;
+}
+
+.answer-btn:nth-child(3) {
+  margin-left: 180px;
+}
+
+.answerTrue {
+  filter: brightness(0) saturate(100%) invert(56%) sepia(76%) saturate(1221%)
+    hue-rotate(105deg) brightness(86%) contrast(101%);
+}
+
+.answerClicked {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(1%) saturate(1317%)
+    hue-rotate(11deg) brightness(93%) contrast(85%);
+}
