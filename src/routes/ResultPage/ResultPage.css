@@ -30,3 +30,10 @@
 .problem-result {
   width: 10px;
 }
+
+.result-base .error {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
