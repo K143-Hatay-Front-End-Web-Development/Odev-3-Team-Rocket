@@ -10,6 +10,13 @@ const Provider = (props) => {
   const [question, setQuestion] = useState(0); // Store current question number
   const [answer, setAnswer] = useState(null); // Store answer for current question (with this state we can change styles for correct and incorrect answers)
 
+  const [quizStats, setQuizStats] = useState({
+    Point: 0,
+    Tour: 0,
+    CorrectAnswers: 0,
+    WrongAnswers: 0,
+  }); // Store quiz stats
+
   return (
     <GameContext.Provider
       value={{
@@ -21,6 +28,8 @@ const Provider = (props) => {
         setQuestion,
         answer,
         setAnswer,
+        quizStats,
+        setQuizStats,
       }}
     >
       {props.children}
