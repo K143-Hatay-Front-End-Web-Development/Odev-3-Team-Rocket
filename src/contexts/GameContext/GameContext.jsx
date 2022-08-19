@@ -11,10 +11,10 @@ const Provider = (props) => {
   const [answer, setAnswer] = useState(null); // Store answer for current question (with this state we can change styles for correct and incorrect answers)
 
   const [quizStats, setQuizStats] = useState({
-    Point: 0,
-    Tour: 0,
-    CorrectAnswers: 0,
-    WrongAnswers: 0,
+    point: 0,
+    tour: 1,
+    correctAnswers: 0,
+    wrongAnswers: 0,
   }); // Store quiz stats
 
   return (

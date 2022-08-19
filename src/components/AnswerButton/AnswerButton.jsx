@@ -5,7 +5,8 @@ import { answerBtn, tick } from "../../assets/svgs";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
 
 const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
-  const { quiz, question, setQuestion, setAnswer } = useGameContext();
+  const { quiz, question, setQuestion, setAnswer, setQuizStats, quizStats } =
+    useGameContext();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -15,8 +16,17 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
     if (quiz[question]?.answers[num] === quiz[question]?.result) {
       setAnswer(true); // if the answer is correct, set the answer to true.
       quiz[question].isTrue = tick; // if the answer is correct, set the isTrue to tick.
-    } else {
+      setQuizStats((quizStats) => ({
+        ...quizStats,
+        point: quizStats.point + quiz[question].point,
+        correctAnswers: quizStats.correctAnswers + 1,
+      })); // if the answer is correct, increase the point and increase the correct answers.
+    } else if (quiz[question]?.answers[num] !== quiz[question]?.result) {
       setAnswer(false); // if the answer is incorrect, set the answer to false.
+      setQuizStats((quizStats) => ({
+        ...quizStats,
+        wrongAnswers: quizStats.wrongAnswers + 1,
+      })); // if the answer is wrong, increase the wrong answers
     }
 
     // When player clicked a button , go to the next question in X seconds. If there is no question, go to the result page.

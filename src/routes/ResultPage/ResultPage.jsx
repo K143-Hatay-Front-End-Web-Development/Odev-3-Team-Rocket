@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
 import { Link } from "react-router-dom";
 import { result, returnBtn, problems } from "../../assets/svgs";
 import "./ResultPage.css";
 
 const ResultPage = () => {
-  const { quiz, question } = useGameContext();
+  const { quiz, question, quizStats, setQuizStats } = useGameContext();
+
+  useEffect(() => {
+    setQuizStats((quizStats) => ({
+      ...quizStats,
+      tour: quizStats.tour + 1,
+    }));
+  }, []);
+
+  const handleClick = () => {
+    setQuizStats((quizStats) => ({
+      ...quizStats,
+      point: 0,
+      correctAnswers: 0,
+      wrongAnswers: 0,
+    }));
+  };
 
   return (
     <section className="result-base">
@@ -16,9 +32,9 @@ const ResultPage = () => {
             <div className="stats-section">
               {result}
               {/* Statistics for the relevant tour */}
-              <p>Puan:</p>
-              <p>Dogru Cevap:</p>
-              <p>Yanlıs Cevap:</p>
+              <p>Puan: {quizStats.point}</p>
+              <p>Dogru Cevap: {quizStats.correctAnswers}</p>
+              <p>Yanlıs Cevap:{quizStats.wrongAnswers}</p>
               <button className="btn large-btn">
                 {/* Return homepage btn */}
                 <Link className="btn large-btn" to="/">
@@ -49,7 +65,7 @@ const ResultPage = () => {
           <div className="error">
             <h1>Go Home and Choose Quiz</h1>
             {/* If there are no questions, go to the home page. */}
-            <Link className="go-home-btn" to="/">
+            <Link onClick={handleClick} className="go-home-btn" to="/">
               GO HOME
             </Link>
           </div>

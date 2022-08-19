@@ -4,7 +4,7 @@ import { useGameContext } from "../../contexts/GameContext/GameContext";
 import "./QuizStats.css";
 
 const QuizStats = () => {
-  const { question, quizStats, setQuizStats } = useGameContext();
+  const { question, quizStats } = useGameContext();
 
   return (
     <div className="base">
