@@ -27,9 +27,9 @@
 }
 
 .info {
-  width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 50px;
 }
 
 .error {

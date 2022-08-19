@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
-import "./Answers.css";
 import AnswerButton from "../AnswerButton/AnswerButton";
 
 const Answers = () => {
@@ -8,7 +7,7 @@ const Answers = () => {
   const [clickedBtn, setClickedBtn] = useState(); // Store the clicked button.
 
   return (
-    <div className="answers">
+    <div>
       {
         // If there is no question, display nothing
         quiz[question]?.answers &&
