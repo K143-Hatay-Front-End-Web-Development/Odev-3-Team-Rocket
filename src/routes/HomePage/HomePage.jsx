@@ -12,14 +12,17 @@ import {
   divisionQuiz,
 } from "./QuizFunctions.js";
 
+// Array of operators to be displayed on the home page.
 const operators = ["Toplama", "Çıkarma", "Çarpma", "Bölme"];
 
 const HomePage = () => {
-  const { operator, setOperator, setQuiz } = useGameContext();
+  const { operator, setQuiz } = useGameContext();
 
   useEffect(() => {
-    const questions = [];
+    const questions = []; // Create an empty array to store quiz questions
 
+    // Add quiz questions to the array depending on the operator.
+    // This creates 10 questions for selected operator.
     for (let i = 0; i < 10; i++) {
       if (operator === "Toplama") {
         questions.push(additionQuestion());
@@ -32,6 +35,7 @@ const HomePage = () => {
       }
     }
 
+    // Set the quiz questions to the state
     setQuiz(questions);
   }, [operator]);
 
@@ -39,25 +43,21 @@ const HomePage = () => {
     <div className="container home-wrapper">
       <header>{header}</header>
       <section className="home">
-        <MainStats />
+        <MainStats /> {/* Main statistics of player */}
         <div>
+          {/* Map over the operators array and create operator buttons */}
           {operators.map((opr, index) => {
-            return (
-              <OperatorButton
-                key={index}
-                text={opr}
-                operator={operator}
-                setOperator={setOperator}
-              />
-            );
+            return <OperatorButton key={index} text={opr} />;
           })}
         </div>
       </section>
       <Link
         onClick={() =>
+          // throws a warning if the player didn't choose the operator
           operator === null && alert("Lütfen dört işlemden birini seçiniz.")
         }
         className="btn large-btn"
+        // Navigate to the game page when the operator selected. Otherwise, do nothing.
         to={operator !== null ? "/game" : "#"}
       >
         {startBtn}

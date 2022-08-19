@@ -1,10 +1,12 @@
 import React from "react";
-
+import { useGameContext } from "../../contexts/GameContext/GameContext";
 import { tick } from "../../assets/svgs";
-
 import "./OperatorButton.css";
 
-function OperatorButton({ text, operator, setOperator }) {
+function OperatorButton({ text }) {
+  const { operator, setOperator } = useGameContext();
+
+  // Set the operator to the state when the button is clicked
   const handleClick = () => setOperator(text);
 
   return (
@@ -12,7 +14,8 @@ function OperatorButton({ text, operator, setOperator }) {
       <button className="btn operator-btn" onClick={handleClick}>
         {text}
       </button>
-      <p>{operator === text && tick}</p>
+      {/*Show tick if the operator is the same as the one in the state */}
+      <p>{operator === text && tick}</p>{" "}
     </div>
   );
 }

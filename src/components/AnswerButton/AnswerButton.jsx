@@ -9,22 +9,26 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (clickedBtn !== undefined) return;
-    setClickedBtn(num);
+    if (clickedBtn !== undefined) return; // If the button is clicked, do nothing.
+    setClickedBtn(num); // Store the clicked button's number.
 
     if (quiz[question]?.answers[num] === quiz[question]?.result) {
-      setAnswer(true);
-      quiz[question].isTrue = tick;
+      setAnswer(true); // if the answer is correct, set the answer to true.
+      quiz[question].isTrue = tick; // if the answer is correct, set the isTrue to tick.
     } else {
-      setAnswer(false);
+      setAnswer(false); // if the answer is incorrect, set the answer to false.
     }
 
+    // When player clicked a button , go to the next question in X seconds. If there is no question, go to the result page.
     setTimeout(() => {
       if (question < quiz.length - 1) {
+        // If the question is not the last question, go to the next question.
+        // Reset clicked button and answer for next question.
         setQuestion(question + 1);
         setClickedBtn();
         setAnswer(null);
       } else {
+        // if the game is over, navigate to the results page and reset everything.
         setClickedBtn();
         setAnswer(null);
         setQuestion(0);
@@ -33,6 +37,7 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
     }, 500);
   };
 
+  // if clickedBtn's text is equal to the result, btn-color green.
   const trueBtnStyle = (() => {
     return (
       clickedBtn !== undefined &&
@@ -41,6 +46,7 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
     );
   })();
 
+  // if clickedBtn equal to button's num, btn-color black.
   const clickedBtnStyle = (() => {
     return num === clickedBtn && "answerClicked";
   })();
