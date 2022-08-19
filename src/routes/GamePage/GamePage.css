@@ -42,10 +42,21 @@
 
 .go-home-btn {
   text-decoration: none;
-  color: #000;
+  color: white;
   font-size: 48px;
   margin-top: 5rem;
   padding: 2rem;
-  background-color: #fff;
-  border-radius: 5%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  transition: all 0.5s;
+}
+
+.go-home-btn:hover {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(28%) sepia(82%) saturate(7491%)
+    hue-rotate(354deg) brightness(101%) contrast(126%);
+}
+
+.go-home-btn:active {
+  transform: translateY(5px);
 }
