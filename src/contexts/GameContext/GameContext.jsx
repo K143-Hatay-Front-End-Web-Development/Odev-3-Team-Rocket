@@ -17,6 +17,13 @@ const Provider = (props) => {
     wrongAnswers: 0,
   }); // Store quiz stats
 
+  const [stats, setStats] = useState({
+    point: 0,
+    answeredQuestions: 0,
+    correctAnswers: 0,
+    wrongAnswers: 0,
+  }); // Store game stats
+
   return (
     <GameContext.Provider
       value={{
@@ -30,6 +37,8 @@ const Provider = (props) => {
         setAnswer,
         quizStats,
         setQuizStats,
+        stats,
+        setStats,
       }}
     >
       {props.children}
