@@ -1,7 +1,6 @@
 import React from "react";
 import { useGameContext } from "../../contexts/GameContext/GameContext";
 import { student, unhappyStudent, happyStudent } from "../../assets/svgs";
-import "./QuestionSection.css";
 
 const QuestionSection = () => {
   const { quiz, question, answer } = useGameContext();

@@ -63,20 +63,22 @@ const ResultPage = () => {
             <div className="problems">
               <div className="problems-header">{problems}</div>
               {/* Map over the quiz and list the questions. */}
-              {quiz.map((question, index) => {
-                return (
-                  <div key={index} className="question-results">
-                    <div className="problems">
-                      <p>
-                        {`${question.number1} ${question.operator} ${question.number2} = ${question.result}`}
-                      </p>
+              <div className="problem-container">
+                {quiz.map((question, index) => {
+                  return (
+                    <div key={index} className="question-results">
+                      <div className="problems">
+                        <p>
+                          {`${question.number1} ${question.operator} ${question.number2} = ${question.result}`}
+                        </p>
+                      </div>
+                      <div className="problem-result">
+                        <p>{question.isTrue}</p>
+                      </div>
                     </div>
-                    <div className="problem-result">
-                      <p>{question.isTrue}</p>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         ) : (
