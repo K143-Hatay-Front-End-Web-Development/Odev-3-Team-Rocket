@@ -44,7 +44,7 @@ const AnswerButton = ({ num, clickedBtn, setClickedBtn }) => {
         setQuestion(0);
         navigate("/result");
       }
-    }, 500);
+    }, 2000);
   };
 
   // if clickedBtn's text is equal to the result, btn-color green.
