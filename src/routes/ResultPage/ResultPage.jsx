@@ -33,7 +33,6 @@ const ResultPage = () => {
   }, [stats]);
 
   const handleClick = () => {
-    console.log("anaaaaaaaaa");
     return setQuizStats((quizStats) => ({
       ...quizStats,
       point: 0,
