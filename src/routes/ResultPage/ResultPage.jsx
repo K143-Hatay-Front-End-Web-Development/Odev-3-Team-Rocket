@@ -5,17 +5,36 @@ import { result, returnBtn, problems } from "../../assets/svgs";
 import "./ResultPage.css";
 
 const ResultPage = () => {
-  const { quiz, question, quizStats, setQuizStats } = useGameContext();
+  const { quiz, question, quizStats, setQuizStats, stats, setStats } =
+    useGameContext();
 
   useEffect(() => {
+    if (!quiz[question]?.answers) return; // If there is no question, return
+
+    setStats((stats) => ({
+      ...stats,
+      point: stats.point + quizStats.point,
+      answeredQuestions:
+        stats.answeredQuestions +
+        quizStats.correctAnswers +
+        quizStats.wrongAnswers,
+      correctAnswers: stats.correctAnswers + quizStats.correctAnswers,
+      wrongAnswers: stats.wrongAnswers + quizStats.wrongAnswers,
+    }));
+
     setQuizStats((quizStats) => ({
       ...quizStats,
       tour: quizStats.tour + 1,
     }));
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("stats", JSON.stringify(stats));
+  }, [stats]);
+
   const handleClick = () => {
-    setQuizStats((quizStats) => ({
+    console.log("anaaaaaaaaa");
+    return setQuizStats((quizStats) => ({
       ...quizStats,
       point: 0,
       correctAnswers: 0,
@@ -37,7 +56,7 @@ const ResultPage = () => {
               <p>Yanlıs Cevap:{quizStats.wrongAnswers}</p>
               <button className="btn large-btn">
                 {/* Return homepage btn */}
-                <Link className="btn large-btn" to="/">
+                <Link onClick={handleClick} className="btn large-btn" to="/">
                   {returnBtn}
                 </Link>
               </button>
@@ -65,7 +84,7 @@ const ResultPage = () => {
           <div className="error">
             <h1>Go Home and Choose Quiz</h1>
             {/* If there are no questions, go to the home page. */}
-            <Link onClick={handleClick} className="go-home-btn" to="/">
+            <Link className="go-home-btn" to="/">
               GO HOME
             </Link>
           </div>

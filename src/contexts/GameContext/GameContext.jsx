@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const GameContext = createContext();
 
@@ -17,6 +17,20 @@ const Provider = (props) => {
     wrongAnswers: 0,
   }); // Store quiz stats
 
+  const [stats, setStats] = useState({
+    point: 0,
+    answeredQuestions: 0,
+    correctAnswers: 0,
+    wrongAnswers: 0,
+  }); // Store game stats
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("stats"));
+    if (items) {
+      setStats(items);
+    }
+  }, []);
+
   return (
     <GameContext.Provider
       value={{
@@ -30,6 +44,8 @@ const Provider = (props) => {
         setAnswer,
         quizStats,
         setQuizStats,
+        stats,
+        setStats,
       }}
     >
       {props.children}
