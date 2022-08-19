@@ -5,7 +5,7 @@ import { result, returnBtn, problems } from "../../assets/svgs";
 import "./ResultPage.css";
 
 const ResultPage = () => {
-  const { quiz, question, quizStats, setQuizStats, setStats } =
+  const { quiz, question, quizStats, setQuizStats, stats, setStats } =
     useGameContext();
 
   useEffect(() => {
@@ -27,6 +27,10 @@ const ResultPage = () => {
       tour: quizStats.tour + 1,
     }));
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("stats", JSON.stringify(stats));
+  }, [stats]);
 
   const handleClick = () => {
     console.log("anaaaaaaaaa");

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const GameContext = createContext();
 
@@ -23,6 +23,13 @@ const Provider = (props) => {
     correctAnswers: 0,
     wrongAnswers: 0,
   }); // Store game stats
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("stats"));
+    if (items) {
+      setStats(items);
+    }
+  }, []);
 
   return (
     <GameContext.Provider
